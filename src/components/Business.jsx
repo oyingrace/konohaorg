@@ -1,6 +1,8 @@
 import { features } from "../constants";
 import styles, { layout } from "../style";
 import Button from "./Button";
+import { motion } from 'framer-motion';
+import { fadeIn, staggerContainer } from '../utils/motion';
 
 const FeatureCard = ({ icon, title, content, index }) => (
   <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? "mb-6" : "mb-0"} feature-card`}>
@@ -19,27 +21,35 @@ const FeatureCard = ({ icon, title, content, index }) => (
 );
 
 const Business = () =>  (
-  <section id="features" className={layout.section}>
-    <div className={layout.sectionInfo}>
+  <motion.section
+  variants={staggerContainer}
+  initial="hidden"
+  whileInView="show"
+  viewport={{ once: false, amount: 0.25 }}
+  id="courses" className={layout.section}>
+
+    <motion.div
+     variants={fadeIn('down', 'tween', 0.3, 1)}
+    className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        You do the business, <br className="sm:block hidden" /> we’ll handle
-        the money.
+        Why Choose<br className="sm:block hidden" /> Us
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        With the right credit card, you can improve your financial life by
-        building credit, earning rewards and saving money. But with hundreds
-        of credit cards on the market.
+Our courses have been prepared to give you the knowledge needed to build, Enough money to invest in projects, 
+A powerful branding/influence/portfolio to land good deals and a strong network.
       </p>
 
       <Button styles={`mt-10`} />
-    </div>
+    </motion.div>
 
-    <div className={`${layout.sectionImg} flex-col`}>
+    <motion.div
+    variants={fadeIn('up', 'tween', 0.3, 1)}
+    className={`${layout.sectionImg} flex-col`}>
       {features.map((feature, index) => (
         <FeatureCard key={feature.id} {...feature} index={index} />
       ))}
-    </div>
-  </section>
+    </motion.div>
+  </motion.section>
 );
 
 export default Business;
