@@ -42,7 +42,8 @@ import arrowup from "./arrowup.svg";
 import arrowdown from "./arrowdown.svg";
 import planet09 from "./planet09.png";
 import book from "./book.png";
-import jobs from "./jobs.png"
+import jobs from "./jobs.png";
+import  logo2 from "./logo2.png"
 
 export {
   airbnb,
@@ -90,6 +91,7 @@ export {
   planet09,
   book,
   jobs,
+  logo2
   
   
 };
